@@ -11,7 +11,8 @@
     "dev:start:client": "cd client && yarn start",
     "dev:start": "concurrently \"yarn run dev:start:server\" \"yarn run dev:start:client\"",
     "install": "cd client && yarn install",
-    "clean:reports": "rm -rf ./client/coverage && rm -rf ./coverage"
+    "clean:reports": "rm -rf ./client/coverage && rm -rf ./coverage",
+    "build": "sh ./util/build.sh"
   },
   "engines": {
     "node": ">=12.12.0",
