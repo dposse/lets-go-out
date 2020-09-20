@@ -1,3 +1,5 @@
+import { Request, Response } from "express";
+
 const express = require('express');
 const morgan = require('morgan');
 const PORT = process.env.PORT || 9001;
@@ -13,14 +15,14 @@ process.env.NODE_ENV === 'production'
 
 // Tell node where to serve static files from
 app.use(express.static(path.join(__dirname, '../client/public')));
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
 // API routes
 app.use('/api', api);
 
-app.use(function (req, res) {
+app.use(function (req: Request, res: Response) {
   res.status(404).send("That's a 404 folks...");
 });
 
