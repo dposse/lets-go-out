@@ -1,10 +1,10 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const { describe } = require('mocha');
-const should = chai.should(); // Required for res.should chaining
-const request = require('supertest');
+import 'mocha';
+import chai, { expect } from 'chai';
+import request from 'supertest';
+import chaiHttp from 'chai-http';
+import { Server } from 'http';
 
-let server;
+let server: Server;
 
 chai.use(chaiHttp);
 
@@ -18,16 +18,16 @@ describe('server - ', () => {
 
   // There is a coverage bug in istanbul, this should cover root route
   it('should serve public html file', async () => {
-    request(server)
+    const response = await request(server)
       .get('/')
       .expect('Content-Type', /html/)
-      .end((err, res) => {
-        res.should.have.status(200);
-      });
+
+    console.log(response);
+    expect(response.status).to.equal(200);
   });
 
   it('should send 404 on undefined route', async () => {
-    request(server)
+    await request(server)
       .get('/fake-route')
       .end((err, res) => {
         res.text.should.equal('That\'s a 404 folks...')

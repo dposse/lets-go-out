@@ -1,11 +1,9 @@
-import { Request, Response } from "express";
-
-const express = require('express');
+import express, { Request, Response, Application } from "express";
 const morgan = require('morgan');
 const PORT = process.env.PORT || 9001;
 const path = require('path');
 const api = require('./routes/api');
-const app = express();
+const app: Application = express();
 
 // Middleware:
 /* istanbul ignore next */

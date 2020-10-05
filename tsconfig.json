@@ -72,8 +72,8 @@
     "./server"
   ],
   "exclude": [
-    "./server/**/*.test.ts",
-    "./server/**/*.test.js",
+    // "./server/**/*.test.ts",
+    // "./server/**/*.test.js",
     "./client/"
   ]
 }

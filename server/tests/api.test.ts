@@ -1,10 +1,9 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const { describe } = require('mocha');
-const should = chai.should(); // Required for res.should chaining
-const { expect } = require('chai');
-const request = require('supertest');
-let server;
+import 'mocha';
+import chai, { should, expect } from 'chai';
+import request from 'supertest';
+import chaiHttp from 'chai-http';
+import { Server } from 'http';
+let server: Server;
 
 chai.use(chaiHttp);
 
@@ -18,7 +17,7 @@ describe('REST api - ', () => {
   });
 
   it('should pass /current-time', async () => {
-    request(server)
+    await request(server)
       .get('/api/current-time')
       .end((err, res) => {
         res.should.have.status(200);
