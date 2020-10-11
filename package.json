@@ -5,7 +5,7 @@
   "main": "./server/server.ts",
   "scripts": {
     "test": "yarn run clean:reports && yarn run test:server && yarn run test:client",
-    "test:server": "cd server && nyc mocha -r ts-node/register 'tests/**/*.ts' --recursive --jobs 1",
+    "test:server": "cd server && nyc mocha -r ts-node/register 'tests/**/*.ts' --recursive --timeout 10000",
     "test:client": "cd client && yarn test:coverage",
     "dev:start:server": "nodemon ./server/server.ts",
     "dev:start:client": "cd client && yarn start",
