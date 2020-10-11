@@ -1,5 +1,5 @@
 import 'mocha';
-import chai, { expect } from 'chai';
+import chai, { should, expect } from 'chai';
 import request from 'supertest';
 import chaiHttp from 'chai-http';
 import { Server } from 'http';
@@ -26,5 +26,6 @@ describe('REST api - ', () => {
       // });
 
       expect(response.status).to.equal(200);
+      expect(new Date(response.body.time).getDate()).equal(new Date().getDate());
   });
 });
