@@ -22,16 +22,13 @@ describe('server - ', () => {
       .get('/')
       .expect('Content-Type', /html/)
 
-    console.log(response);
     expect(response.status).to.equal(200);
   });
 
   it('should send 404 on undefined route', async () => {
-    await request(server)
+    const response = await request(server)
       .get('/fake-route')
-      .end((err, res) => {
-        res.text.should.equal('That\'s a 404 folks...')
-        res.should.have.status(404);
-      });
+      
+    expect(response.status).to.equal(404);
   });
 });
