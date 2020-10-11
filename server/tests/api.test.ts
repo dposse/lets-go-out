@@ -19,11 +19,6 @@ describe('REST api - ', () => {
   it('should pass /current-time', async () => {
     const response = await request(server)
       .get('/api/current-time')
-      // .end((err, res) => {
-      //   res.should.have.status(200);
-      //   res.body.should.have.property('time');
-      //   expect(new Date(res.body.time).getDate()).equal(new Date().getDate());
-      // });
 
       expect(response.status).to.equal(200);
       expect(new Date(response.body.time).getDate()).equal(new Date().getDate());
